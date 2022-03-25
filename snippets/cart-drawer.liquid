@@ -1,0 +1,103 @@
+<div id="cart-drawer-overlay">
+	<div id="cart-drawer-holder">
+		<div id="cart-drawer-header">
+			<div class="cross-icon">
+					X
+			</div>
+		</div>
+		<div id="cart-drawer"></div>
+		<div id="cart-drawer-body">
+			<p>Total Price: {{ cart.total_price | money }}</p>
+		</div>
+	</div>
+</div>
+
+
+<script>
+	$(document).ready(function () {
+		$("#cart-icon-bubble").on("click", function () {
+			$('#cart-drawer-holder').fadeIn();
+			$("#cart-drawer-holder").addClass('active');
+			$("#cart-drawer-overlay").addClass('open');
+			setTimeout(function () {
+				fetch('/cart.js')
+					.then((resp) => resp.json())
+					.then(function (data) {
+						console.log(data);
+						document.getElementById('cart-drawer').innerHTML = '';
+						if (data.items.length > 0) {
+							data.items.forEach(function (product, index) {
+								document.getElementById('cart-drawer').innerHTML +=
+									`<div class="cart-drawer-item">	
+									<a href="${product.url}">
+										<h5>${product.title}</h5>									
+										<img width="60" src="${product.image}&width=60">
+									</a>											
+									<p>$${product.price/100}</p>										
+									</div>`;
+							});
+						} else {
+							document.getElementById('cart-drawer').innerHTML = '<h3>The Cart Is Empty</h3>';
+						}
+					})
+					.catch((err) => console.log(err));
+			}, 200);
+		});
+		$(".cross-icon").on("click", function () {
+			$('#cart-drawer-holder').fadeOut();
+			$("#cart-drawer-holder").removeClass('active');
+			$("#cart-drawer-overlay").removeClass('open');
+		});
+	});
+</script>
+
+<style>	
+
+	#cart-drawer-overlay.open {
+		left: 0;
+		transition: left 0s, opacity .4s;
+		opacity: 1;
+	}
+
+	#cart-drawer-holder {
+		position: fixed;
+		right: 0;
+		display: none;
+		padding: 50px 25px 25px;
+		top: 35px;
+		width: 100%;
+		max-width: 350px;		
+		transition: .4s transform;
+		box-shadow: 0 0 14px #000000e6, 0 0 4px #00000036, 0 0 0 1px #000000e6;
+		transform: translate(100%);		
+		background: #FFF;
+		flex-direction: column;	
+		overflow: hidden;	
+	}
+
+	#cart-drawer-holder.active {
+		transform: translate(0);
+	}
+	.cross-icon {
+		z-index: 99999;
+		width: 35px;
+		display: inline;
+		position: absolute;
+		top: 0px;
+		right: -10px;
+		font-size: 24px;
+	}
+	.cross-icon:hover {
+		cursor: pointer;
+	}
+
+	.cart-drawer-item {
+		display: flex;
+    	flex-direction: column;
+    	align-items: center;
+		text-align: center;
+	}
+	#cart-drawer-body p, #cart-drawer h3 {
+		text-align: center;
+	}
+</style>
