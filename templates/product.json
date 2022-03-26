@@ -114,6 +114,37 @@
         "padding_bottom": 12
       }
     },
+    "1648234796d9ea1536": {
+      "type": "fqb-slider",
+      "blocks": {
+        "d63d87da-5668-4919-9d49-de7782b6a9c6": {
+          "type": "slider",
+          "settings": {
+            "fqb_collection": "fbq",
+            "limit": 8,
+            "stock_status": true
+          }
+        }
+      },
+      "block_order": [
+        "d63d87da-5668-4919-9d49-de7782b6a9c6"
+      ],
+      "settings": {
+        "container_width": 120,
+        "container_padding": 2,
+        "title": "Frequently Bought Together",
+        "align": "center",
+        "font_size": 28,
+        "font_style": "italic",
+        "arrow_color": "#39b8be",
+        "sm_range": 1,
+        "md_range": 2,
+        "lg_range": 4,
+        "xl_range": 6,
+        "img_width": 160,
+        "slick_height": 380
+      }
+    },
     "image-with-text": {
       "type": "image-with-text",
       "blocks": {
@@ -211,6 +242,7 @@
   },
   "order": [
     "main",
+    "1648234796d9ea1536",
     "image-with-text",
     "multicolumn",
     "product-recommendations"

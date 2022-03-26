@@ -1,6 +1,7 @@
 <div id="cart-drawer-overlay">
 	<div id="cart-drawer-holder">
 		<div id="cart-drawer-header">
+			<div class="h3 center"><a href="/cart">Shopping Cart</a></div>
 			<div class="cross-icon">
 					X
 			</div>
@@ -8,14 +9,18 @@
 		<div id="cart-drawer"></div>
 		<div id="cart-drawer-body">
 			<p>Total Price: {{ cart.total_price | money }}</p>
+			<a class="checkout" href="/checkout">Checkout</a>
 		</div>
-	</div>
+		{% section 'fqb-slider' %}
+	</div>	
 </div>
 
 
 <script>
 	$(document).ready(function () {
 		$("#cart-icon-bubble").on("click", function () {
+			$(".fqb-snippet").slick("refresh");			
+			
 			$('#cart-drawer-holder').fadeIn();
 			$("#cart-drawer-holder").addClass('active');
 			$("#cart-drawer-overlay").addClass('open');
@@ -63,8 +68,9 @@
 		position: fixed;
 		right: 0;
 		display: none;
-		padding: 50px 25px 25px;
-		top: 35px;
+		z-index: 9999999;
+		padding: 25px;
+		top: 0;
 		width: 100%;
 		max-width: 350px;		
 		transition: .4s transform;
@@ -72,7 +78,9 @@
 		transform: translate(100%);		
 		background: #FFF;
 		flex-direction: column;	
-		overflow: hidden;	
+		overflow-y: scroll;	
+		overflow-x: hidden;
+    	height: 800px;
 	}
 
 	#cart-drawer-holder.active {
@@ -97,7 +105,18 @@
     	align-items: center;
 		text-align: center;
 	}
-	#cart-drawer-body p, #cart-drawer h3 {
+	#cart-drawer h3 {
 		text-align: center;
+	}
+	#cart-drawer-body p {
+		text-align: center;
+	}
+	#cart-drawer-body .checkout {
+		padding: 12px;
+		color: #333;
+		background-color: #ccc;
+		border-radius: 4px;
+		display: block;
+    	text-align: center;
 	}
 </style>

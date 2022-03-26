@@ -28,6 +28,37 @@
         "show_cart_note": false
       }
     },
+    "1648282914c485018c": {
+      "type": "fqb-slider",
+      "blocks": {
+        "3f0cdfbc-7dfe-461f-9d94-32550d99cd5c": {
+          "type": "slider",
+          "settings": {
+            "fqb_collection": "fbq",
+            "limit": 8,
+            "stock_status": true
+          }
+        }
+      },
+      "block_order": [
+        "3f0cdfbc-7dfe-461f-9d94-32550d99cd5c"
+      ],
+      "settings": {
+        "container_width": 140,
+        "container_padding": 2,
+        "title": "Frequently Bought",
+        "align": "center",
+        "font_size": 24,
+        "font_style": "normal",
+        "arrow_color": "#ce5dc7",
+        "sm_range": 2,
+        "md_range": 2,
+        "lg_range": 4,
+        "xl_range": 6,
+        "img_width": 180,
+        "slick_height": 380
+      }
+    },
     "featured-collection": {
       "type": "featured-collection",
       "settings": {
@@ -52,6 +83,7 @@
   "order": [
     "cart-items",
     "cart-footer",
+    "1648282914c485018c",
     "featured-collection"
   ]
 }

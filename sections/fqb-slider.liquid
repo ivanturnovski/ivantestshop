@@ -1,0 +1,199 @@
+<!-- Slick Carousel Assets START -->
+<link href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" rel="stylesheet" type="text/css"/>
+<link href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" rel="stylesheet" type="text/css"/>
+<script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" type="text/javascript"></script>
+<!-- Slick Carousel Assets END -->
+
+<div class="container-width" id="fqb-inner-{{section.id}}">
+    <h4 class="fqb-heading" style="text-align:{{section.settings.align}}">{{ section.settings.title }}</h4>
+    {% render 'fqb-slider' %}
+</div>
+
+
+{% schema %}
+
+{
+    "name": "FQB Collection",
+    "class": "fqb-section",
+    "tag": "section",
+    "settings": [
+		{
+			"type": "header",
+			"content": "Section"
+		},
+		{
+			"type": "number",
+			"id": "container_width",
+			"label": "Container Width (REM)",
+			"default": 120
+		},
+		{
+			"type": "number",
+			"id": "container_padding",
+			"label": "Container Padding (REM)",
+			"default": 2
+		},
+		{
+			"type": "header",
+			"content": "Heading"
+		},
+        {
+            "type": "text",
+            "id": "title",
+            "default": "Enter Section Title",
+            "label": "Title"
+        },
+		{
+			"type": "select",
+			"id": "align",
+			"label": "Alignment",
+			"options": [
+				{
+					"value": "left",
+					"label": "Left"					
+				},
+				{
+					"value": "center",
+					"label": "Center"					
+				},
+				{
+					"value": "right",
+					"label": "Right"					
+				}
+			]
+		},
+		{
+			"type": "range",
+			"id": "font_size",
+			"label": "Font Size",			
+			"min": 14,
+			"max": 36,
+			"step": 2,
+			"default": 16
+		},
+		{
+			"type": "radio",
+			"id": "font_style",
+			"label": "Style",
+			"default": "normal",
+			"info": "Pick Font Style",
+			"options": [
+				{
+					"value": "normal",
+					"label": "Normal"
+				},
+				{
+					"value": "italic",
+					"label": "Italic"
+				}
+			]
+		},
+		{
+			"type": "header",
+			"content": "Carousel"
+		},
+		{
+			"type": "color",
+			"id": "arrow_color",
+			"label": "Arrows Color",
+			"default": "#FFF",
+			"info": "Select Color"
+		},
+		{
+			"type": "range",
+			"id": "sm_range",
+			"label": "Number of Slides for devices < 576px",			
+			"min": 1,
+			"max": 3,
+			"step": 1,
+			"default": 2,
+			"info": "Default 2"
+		},
+		{
+			"type": "range",
+			"id": "md_range",
+			"label": "Number of Slides for devices 576px - 768px",			
+			"min": 1,
+			"max": 4,
+			"step": 1,
+			"default": 2,
+			"info": "Default 2"
+		},
+		{
+			"type": "range",
+			"id": "lg_range",
+			"label": "Number of Slides for devices 768px - 992px",			
+			"min": 1,
+			"max": 4,
+			"step": 1,
+			"default": 4,
+			"info": "Default 4"
+		},
+		{
+			"type": "range",
+			"id": "xl_range",
+			"label": "Number of Slides for devices > 992px",			
+			"min": 1,
+			"max": 6,
+			"step": 1,
+			"default": 6,
+			"info": "Default 6"
+		},
+		{
+			"type": "range",
+			"id": "img_width",
+			"label": "Image Width (PX)",			
+			"min": 80,
+			"max": 320,
+			"step": 10,
+			"default": 160
+		},
+		{
+			"type": "range",
+			"id": "slick_height",
+			"label": "Slick Slider Height (PX)",			
+			"min": 300,
+			"max": 600,
+			"step": 20,
+			"default": 400
+		}		
+    ],
+    "blocks": [
+        {
+            "name": "Slider",
+            "type": "slider",
+            "limit": 1,
+            "settings": [
+                {
+                    "type": "collection",
+                    "id": "fqb_collection",
+                    "label": "Choose Frequently Bought Together Collection"
+                },				
+				{
+					"type": "range",
+					"id": "limit",
+					"label": "Show MAX Carousel Products to Slide",					
+					"min": 6,
+					"max": 24,
+					"step": 1,
+					"default": 8
+				},
+				{
+					"type": "checkbox",
+					"id": "stock_status",
+					"label": "Show Stock Status",
+					"default": true,
+					"info": "Default = True"
+				}
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "category": "Collection",
+            "name": "FQB Collection"
+        }
+    ]
+}
+
+{% endschema %}

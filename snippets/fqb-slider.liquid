@@ -1,0 +1,123 @@
+<div class="fqb-snippet" id="{{ section.id }}">
+    {%- for block in section.blocks -%}
+        {%- assign item = block.settings -%}
+        {%- for product in collections[item.fqb_collection].products limit: item.limit -%}
+            {%- assign image = product.featured_media.preview_image -%}
+            <div class="fqb-product">
+                <div class="fqb-product-inner">
+                    <div class="fqb-img">
+                        <img src="{{ image | img_url: '250x'}}" alt="{{ image.alt }}" width="{{ section.settings.img_width }}">
+                    </div>
+                    <div class="fqb-details">
+                        <a href="{{ product.url }}">{{ product.title }}</a>
+                        {% if item.stock_status == true %}
+                            {%- if product.available -%}
+                                <span class="badge bg-success">In Stock</span>
+                            {%- else -%}
+                                <span class="badge bg-danger">Sold Out</span>
+                            {%- endif -%}
+                        {% endif %}
+                        <span class="price">{{ product.price | money }}</span>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% endfor %}
+</div>
+
+<script>
+	$(document).ready(function () {
+	$('#{{ section.id }}').slick({
+		infinite: true,
+		slidesToShow: {{ section.settings.xl_range}},
+		slidesToScroll: 3,
+		arrows: true,
+		autoplay: false,
+		autoplaySpeed: 3000,
+		responsive: [
+			{
+				breakpoint: 992,
+				settings: {
+					arrows: true,
+					slidesToShow: {{ section.settings.lg_range}},
+					slidesToScroll: 1,
+					autoplay: true,
+					autoplaySpeed: 3000,
+				}
+			},
+			{
+				breakpoint: 768,
+				settings: {
+					arrows: false,
+					autoplay: true,
+					autoplaySpeed: 3000,
+					slidesToShow: {{ section.settings.md_range}},
+					slidesToScroll: 1
+				}
+			},
+			{
+				breakpoint: 576,
+				settings: {
+					arrows: false,
+					autoplay: true,
+					autoplaySpeed: 3000,
+					slidesToShow: {{ section.settings.sm_range}},
+					slidesToScroll: 1
+				}
+			}
+		]
+	});		
+})
+</script>
+
+
+
+{% style %}
+#fqb-inner-{{section.id}}.container-width {
+	overflow: hidden;
+	max-width: {{section.settings.container_width}}rem;
+    margin: 0 auto;
+	padding: 0 {{section.settings.container_padding}}rem;
+}
+#{{section.id}} .fqb-product {
+	margin: 12px;
+}
+#{{section.id}} .slick-next {
+	right: -20px;
+}
+#{{section.id}} .slick-prev {
+	left: -20px;
+}
+#{{section.id}} .badge {
+	margin-top: auto;
+    margin-bottom: 20px;
+}
+#{{section.id}} .fqb-img {
+	display: flex;
+	justify-content: center;
+}
+#fqb-inner-{{section.id}} .fqb-heading {	
+	font-size: {{section.settings.font_size}}px;	
+	font-style: {{ section.settings.font_style}};
+}
+#{{section.id}} .slick-track {
+	height: {{ section.settings.slick_height}}px;
+}
+#{{section.id}} .fqb-details {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	align-items: center;
+}
+#{{section.id}} .fqb-details a {
+	color: #333;
+}
+#{{section.id}} .fqb-product-inner {	
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+#{{section.id}} .slick-prev:before, #{{section.id}} .slick-next:before {
+	color: {{ section.settings.arrow_color }}!important;
+}
+{% endstyle %}

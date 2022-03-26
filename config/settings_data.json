@@ -11,7 +11,7 @@
     "gradient_background_1": "",
     "colors_background_2": "#f3f3f3",
     "gradient_background_2": "",
-    "type_header_font": "assistant_n4",
+    "type_header_font": "josefin_sans_n4",
     "heading_scale": 100,
     "type_body_font": "assistant_n4",
     "body_scale": 100,
@@ -181,8 +181,40 @@
         "settings": {
           "color_scheme": "background-1"
         }
+      },
+      "fqb-slider": {
+        "type": "fqb-slider",
+        "blocks": {
+          "dec53696-9f18-4bae-9c41-a28c77470a20": {
+            "type": "slider",
+            "settings": {
+              "fqb_collection": "fbq",
+              "limit": 8,
+              "stock_status": true
+            }
+          }
+        },
+        "block_order": [
+          "dec53696-9f18-4bae-9c41-a28c77470a20"
+        ],
+        "settings": {
+          "container_width": 120,
+          "container_padding": 2,
+          "title": "Frequently Bought Together",
+          "align": "center",
+          "font_size": 20,
+          "font_style": "normal",
+          "arrow_color": "#ffffff",
+          "sm_range": 1,
+          "md_range": 2,
+          "lg_range": 2,
+          "xl_range": 2,
+          "img_width": 120,
+          "slick_height": 300
+        }
       }
-    }
+    },
+    "content_for_index": []
   },
   "presets": {
     "Default": {
